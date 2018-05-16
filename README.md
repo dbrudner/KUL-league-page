@@ -1,1 +1,1 @@
-# KUL-league-page
+Starter code with React/Redux, Passport, and Express
