@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node index.js",
-    "heroku-postbuild": "cd react && npm install --only=dev && npm install && npm run build"
+    "heroku-postbuild": "cd react && npm install --only=dev && npm install && npm run build",
+    "dev": "nodemon index.js"
   },
   "keywords": [],
   "author": "",

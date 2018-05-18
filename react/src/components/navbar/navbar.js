@@ -17,14 +17,13 @@ export default class Navbar extends Component {
     closeSlideMenu = () => {
 
         if (this.state.isSlideMenuOpen) {
-            console.log('hi');            
             this.setState({isSlideMenuOpen: false})
         }
     }
 
     render() {
         return (
-            <Nav onClick={e => this.closeSlideOut}>
+            <Nav>
                 <SlideMenu closeSlideMenu={this.closeSlideMenu} isOpen={this.state.isSlideMenuOpen}/>
                 <Nav.Brand>
                     League
@@ -34,6 +33,5 @@ export default class Navbar extends Component {
                 </Nav.NavList>
             </Nav>
         )
-        
     }
 }
