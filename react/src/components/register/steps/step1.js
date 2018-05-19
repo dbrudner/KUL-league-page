@@ -3,7 +3,7 @@ import Input from '../../../styled/elements/input';
 
 export default function Step1(props) {
 
-    const {firstName, lastName, gender, age} = props.data
+    const {firstName, lastName, gender, age, height} = props.data
 
     return (
         <div>
@@ -18,6 +18,9 @@ export default function Step1(props) {
             </div>
             <div>
                 <Input type="number" value={age} onChange={e => props.handleChange("age", e.target.value)}/>        
+            </div>
+            <div>
+                <Input type="text" value={height} onChange={e => props.handleChange("height", e.target.value)}/>        
             </div>
         </div>
     )

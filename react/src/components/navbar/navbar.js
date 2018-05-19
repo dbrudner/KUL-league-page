@@ -1,37 +1,18 @@
-import React, { Component } from 'react';
-import Nav from '../../styled/blocks/nav';
-import SlideMenu from '../slide-menu/slide-menu';
+import React from 'react';
+import FullNav from './full-nav';
+import MobileNav from './mobile-nav/mobile-nav';
+import MediaQuery from 'react-responsive';
 
-export default class Navbar extends Component {
-    constructor(props) {
-        super(props)
+export default function Navbar() {
 
-        this.state = {
-            isSlideMenuOpen: false,
-        }
-    }
-
-    // Opens and closes slider
-    openSlider = bool => {this.setState({isSlideMenuOpen: bool})}
-
-    closeSlideMenu = () => {
-
-        if (this.state.isSlideMenuOpen) {
-            this.setState({isSlideMenuOpen: false})
-        }
-    }
-
-    render() {
-        return (
-            <Nav>
-                <SlideMenu closeSlideMenu={this.closeSlideMenu} isOpen={this.state.isSlideMenuOpen}/>
-                <Nav.Brand>
-                    League
-                </Nav.Brand>
-                <Nav.NavList>
-                    <Nav.NavListItem onClick={() => this.openSlider(true)}><i className="fas fa-bars"></i></Nav.NavListItem>
-                </Nav.NavList>
-            </Nav>
-        )
-    }
+    return (
+        <div>
+            <MediaQuery query="(max-device-width: 800px)">
+                <MobileNav />
+            </MediaQuery>
+            <MediaQuery query="(min-device-width: 801px)">
+                <FullNav/>
+            </MediaQuery>
+        </div>
+    )
 }
