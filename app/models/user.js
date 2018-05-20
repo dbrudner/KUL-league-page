@@ -4,21 +4,25 @@ const bcrypt = require('bcrypt-nodejs');
 const userSchema = mongoose.Schema({
     email: String,
     password: String,
-    fullName: String,
-    isFemale: Boolean,
-    whoRecomennded: String, //player ID of recomender 
+    isRegistered: {
+        type: Boolean,
+        default: false
+    },
+    firstName: String,
+    lastName: String,
+    gender: String,
+    referral: String, //player ID of recomender 
     height: Number,
     positionValue: Number,
-    experienceValue: Number,
-    athleteValue: Number,
+    experience: Number,
+    athleticism: Number,
     contactInfo: Object,
     jerseyName: String,
-    jerseyNum: Number,
-    jerseyNumBackup: Number,
+    jerseyNumber: Number,
+    jerseyNumbwerBackup: Number,
     jerseyStyle: String,
     jerseySize: String,
     swagOption: Boolean
-
 });
 
 // methods ======================

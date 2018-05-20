@@ -14,4 +14,7 @@ module.exports = function (app, passport) {
 
     // Signs up
     userRoutes.signup(app, passport, '/signup')
+
+    // Registers a user for season
+    userRoutes.register(app, '/register')    
 }

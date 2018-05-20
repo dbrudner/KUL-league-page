@@ -4,7 +4,8 @@ import axios from 'axios';
 import Header from '../../styled/elements/header'
 import P from '../../styled/elements/p'
 import Button from '../../styled/elements/button'
-
+import Input from '../../styled/elements/input'
+import Label from '../../styled/elements/label'
 
 export default class Login extends Component {
     constructor(props) {
@@ -23,9 +24,9 @@ export default class Login extends Component {
     handleSubmit = e => {
         e.preventDefault();
         const {email, password, passwordConfirm} = this.state;
-
-        if (password !== passwordConfirm) return;
-
+        if (password !== passwordConfirm) return;        
+        if (!password.trim() || !email.trim()) return;
+    
         axios.post('/signup', {email, password})
         .then(res => {
             this.setState({redirect: "/"})
@@ -44,13 +45,16 @@ export default class Login extends Component {
                 <P helper>Need help?</P>
                 <form onSubmit={this.handleSubmit}>
                     <div>
-                        <input type="text" value={this.state.email} onChange={e => this.handleChange("email", e.target.value)} />
+                        <Label>Email</Label>
+                        <Input type="text" value={this.state.email} onChange={e => this.handleChange("email", e.target.value)} />
                     </div>
                     <div>
-                        <input type="text" value={this.state.password} onChange={e => this.handleChange("password", e.target.value)} />
+                        <Label>Password</Label>                        
+                        <Input type="text" value={this.state.password} onChange={e => this.handleChange("password", e.target.value)} />
                     </div>
-                    <div>                    
-                        <input type="text" value={this.state.passwordConfirm} onChange={e => this.handleChange("passwordConfirm", e.target.value)} />
+                    <div>                   '
+                        <Label>Confirm your password</Label>                         
+                        <Input type="text" value={this.state.passwordConfirm} onChange={e => this.handleChange("passwordConfirm", e.target.value)} />
                     </div>
                     <Button type="submit">Submit</Button>
                 </form>

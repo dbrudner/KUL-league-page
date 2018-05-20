@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import Input from '../../../styled/elements/input';
+import Label from '../../../styled/elements/label'
 
 export default function Step2(props) {
 
@@ -8,19 +9,19 @@ export default function Step2(props) {
     return (
         <div>
             <div>
-                <label>Jersey Size</label>
+                <Label>Jersey Size</Label>
                 <Input type="text" value={jerseySize} onChange={e => props.handleChange("jerseySize", e.target.value)}/>                    
             </div>
             <div>
-                <label>Jersey Name</label>
+                <Label>Jersey Name</Label>
                 <Input type="text" value={jerseyName} onChange={e => props.handleChange("jerseyName", e.target.value)}/>
             </div>
             <div>
-                <label>Jersey Number</label>
+                <Label>Jersey Number</Label>
                 <Input type="text" value={jerseyNumber} onChange={e => props.handleChange("jerseyNumber", e.target.value)}/>
             </div>
             <div>
-                <label>Jersey Number backup</label>
+                <Label>Jersey Number backup</Label>
                 <Input type="number" value={jerseyNumberBackup} onChange={e => props.handleChange("jerseyNumberBackup", e.target.value)}/>        
             </div>
         </div>

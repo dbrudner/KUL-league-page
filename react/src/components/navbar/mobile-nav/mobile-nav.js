@@ -23,7 +23,7 @@ export default class MobileNav extends Component {
 
     render() {
         return (
-            <MobileNavbar>
+            <MobileNavbar nav>
                 <Link to="/"><MobileNavItem to="Home" icon="fas fa-home" /></Link>
                 <Link to="/schedule"><MobileNavItem to="Schedule" icon="far fa-calendar-alt" /></Link>
                 <Link to="/stats"><MobileNavItem to="Stats" icon="fas fa-table" /></Link>

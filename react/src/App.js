@@ -5,6 +5,9 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 
+import {ThemeProvider} from 'styled-components';
+import theme from './theme';
+
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 class App extends Component {
@@ -12,7 +15,9 @@ class App extends Component {
 		return (
             <div>
                 <Provider store={createStoreWithMiddleware(reducers)}>
-                    <Router/>
+                    <ThemeProvider theme={theme}>
+                        <Router/>
+                    </ThemeProvider>
                 </Provider>
             </div>
 		);

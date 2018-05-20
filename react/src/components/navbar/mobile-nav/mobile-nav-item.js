@@ -8,7 +8,7 @@ export default function MobileNavItem(props) {
     return (
         <MobileNavbar.MobileNavItem active={active.toLowerCase() === props.to.toLowerCase() ? true : false}>
             <MobileNavbar.MobileNavIcon>
-            <i class={props.icon}></i>
+            <i className={props.icon}></i>
             </MobileNavbar.MobileNavIcon>
             {props.to}
         </MobileNavbar.MobileNavItem>

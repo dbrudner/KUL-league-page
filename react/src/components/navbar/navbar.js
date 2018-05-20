@@ -8,7 +8,7 @@ export default function Navbar() {
     return (
         <div>
             <MediaQuery query="(max-device-width: 800px)">
-                <MobileNav />
+                <MobileNav/>
             </MediaQuery>
             <MediaQuery query="(min-device-width: 801px)">
                 <FullNav/>

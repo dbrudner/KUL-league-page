@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import Select from '../../../styled/elements/select'
+import Label from '../../../styled/elements/label'
+
 
 export default function Step1(props) {
 
@@ -8,7 +10,7 @@ export default function Step1(props) {
     return (
         <div>
             <div>
-                <label>Which describes you? </label>
+                <Label question>Which describes you? </Label>
                 <Select onChange={e => props.handleChange("experience", e.target.value)}>
                     <option value={1}>Newbie. Less than 3 Ultimate games played.</option>
                     <option value={2}>More than 3 games, but I still can't throw up field.</option>
@@ -17,7 +19,7 @@ export default function Step1(props) {
                 </Select>
             </div>
             <div>
-            <label>Which describes you? </label>
+            <Label>Which describes you? </Label>
                 <Select onChange={e => props.handleChange("timePlayed", e.target.value)}>
                     <option value={1}>I said I'm a newbie! (0 experience).</option>
                     <option value={2}>A few months experience.</option>
