@@ -10,7 +10,7 @@ export default function Step2(props) {
         <div>
             <div>
                 <Label>Jersey Size</Label>
-                <Input type="text" value={jerseySize} onChange={e => props.handleChange("jerseySize", e.target.value)}/>                    
+                <Input autoFocus type="text" value={jerseySize} onChange={e => props.handleChange("jerseySize", e.target.value)}/>                    
             </div>
             <div>
                 <Label>Jersey Name</Label>

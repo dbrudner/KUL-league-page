@@ -1,5 +1,7 @@
 const userRoutes = require('./user-routes')
 const reactRoutes = require('./react-routes')
+const adminRoutes = require('./admin-routes')
+
 
 module.exports = function (app, passport) {
 
@@ -17,4 +19,6 @@ module.exports = function (app, passport) {
 
     // Registers a user for season
     userRoutes.register(app, '/register')    
+
+    adminRoutes.getAllPlayers(app, '/players')
 }

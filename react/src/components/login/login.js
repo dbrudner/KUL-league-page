@@ -18,10 +18,18 @@ export default class Login extends Component {
         }
     }
 
+    componentDidMount() {
+        // axios.get('/test')
+        // .then(res => {
+        //     console.log(res.data);
+        // })
+    }
+
     handleChange = (key, value) => {this.setState({[key]: value})}
 
     handleSubmit = e => {
         e.preventDefault();
+        console.log("SUBMIT");
         const {email, password, passwordConfirm} = this.state;
 
         axios.post('/login', {email, password})
@@ -31,10 +39,14 @@ export default class Login extends Component {
             this.setState({redirect: true})
         }).catch(err => {
             console.log(err);
+            this.setState({
+                error: "Wrong E-Mail or password."
+            })
         })
     }
 
     render() {
+        console.log("LOGIN");
 
         if (this.state.redirect) return <Redirect to="/" />
 
@@ -42,6 +54,7 @@ export default class Login extends Component {
             <div>
                 <Header center>Login</Header>
                 <P helper>Need help?</P>
+                <P error>{this.state.error}</P>                
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <Input type="text" value={this.state.email} onChange={e => this.handleChange("email", e.target.value)} />
@@ -49,9 +62,7 @@ export default class Login extends Component {
                     <div>
                         <Input type="text" value={this.state.password} onChange={e => this.handleChange("password", e.target.value)} />
                     </div>
-                    <div>                   
-                        <Button type="submit">Submit</Button>
-                    </div>
+                    <Button onClick={this.handleSubmit} type="submit">Submit</Button>
                 </form>
             </div>
         )

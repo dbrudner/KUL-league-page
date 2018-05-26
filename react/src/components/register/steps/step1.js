@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import Input from '../../../styled/elements/input';
 import Label from '../../../styled/elements/label';
 import Switch from '../../../styled/blocks/switch';
+
 export default function Step1(props) {
 
     const {firstName, lastName, gender, age, height} = props.data
@@ -10,7 +11,7 @@ export default function Step1(props) {
         <div>
             <div>
                 <Label>First Name</Label>
-                <Input type="text" value={firstName} onChange={e => props.handleChange("firstName", e.target.value)}/>                    
+                <Input autoFocus type="text" value={firstName} onChange={e => props.handleChange("firstName", e.target.value)}/>                    
             </div>
             <div>
                 <Label>Last Name</Label>                

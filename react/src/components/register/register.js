@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 import Swipe from 'react-easy-swipe';
 import Header from '../..//styled/elements/header';
 import Button from '../../styled/elements/button';
@@ -9,11 +10,13 @@ import Step1 from './steps/step1';
 import Step2 from './steps/step2';
 import Step3 from './steps/step3';
 // import Step4 from './steps/step4';
+import InfoCheck from './steps/info-check';
 import Confirm from './steps/confirm';
 import Arrows from '../general/arrows';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { login, logout } from '../../actions/index';
+
 
 class Register extends Component {
 
@@ -92,7 +95,8 @@ class Register extends Component {
         if (this.state.step === 2) return <Step2 data={this.state} nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} />
         // if (this.state.step === 2) return <Step4 data={this.state} nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} />        
         if (this.state.step === 3) return <Step3 data={this.state} nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} />        
-        if (this.state.step === 4) return <Confirm data={this.state} />
+        if (this.state.step === 4) return <InfoCheck data={this.state} />
+        if (this.state.step === 5) return <Confirm />        
     }
 
     renderHeader = () => {
@@ -111,8 +115,14 @@ class Register extends Component {
     render() {
         console.log(this.state);
 
-        if (this.state.isRegistered) return <div>You are already registered!</div>
-        if (!this.state.user) return <div>Sign in before you register!</div>        
+        if (this.state.isRegistered) return <h3 className="text-center">You are already registered!</h3>
+        
+        if (!this.state.user) return (
+            <div>
+                <h3 className="text-center">Log in before you register!</h3>
+                <P center helper>Click <Link to="/login">here</Link> to login</P>
+            </div>
+        )     
 
         return (
             <Swipe
