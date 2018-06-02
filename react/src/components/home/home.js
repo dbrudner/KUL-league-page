@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux'
-import { login, logout } from '../../actions/index';
+import { login, logout, changeSiteContext } from '../../actions/index';
 import UserNotRegistered from './user-not-registered';
 import UserRegistered from './user-registered';
 import UserNotLoggedIn from './user-not-logged-in';
@@ -19,6 +19,8 @@ class Home extends Component {
 
     componentDidMount() {
 
+        this.props.changeSiteContext("Home");
+        console.log(this.props);
         axios.get('/test')
         .then(res => {
             console.log(res.data);
@@ -48,14 +50,12 @@ class Home extends Component {
     }
 
     render() {
+        console.log(this.props);
         return (
             <div>
                 <Header>KUL</Header>
                 {this.state.email ? <h2 className="text-center">Welcome back, {this.state.email}</h2> : null}
                 {this.state.isRegistered ? <UserRegistered/> : this.state.isLoggedIn ? <UserNotRegistered /> : <UserNotLoggedIn />}
-                <div className="text-center">
-                    {this.state.email ? <Button onClick={this.logout}>Logout</Button> : <Link to="/login"><Button>Login</Button></Link>}
-                </div>
             </div>
         )
     }
@@ -68,7 +68,7 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators({login, logout}, dispatch)
+    return bindActionCreators({login, logout, changeSiteContext}, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

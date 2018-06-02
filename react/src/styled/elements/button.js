@@ -6,8 +6,9 @@ const LoginButton = styled.button`
     padding: 5px 20px;
     border-radius: 10px;
     display: inline-block;
-    font-size: 24px;
+    font-size: 36px;
     border: 0px solid white;
+    margin: ${props => props.margin || 0}
 
     :active {
         border: 0px

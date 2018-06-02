@@ -14,3 +14,10 @@ export function logout() {
         payload: null
     }
 }
+
+export function changeSiteContext(context) {
+    return {
+        type: types.CHANGE_SITE_CONTEXT,
+        payload: context
+    }
+}

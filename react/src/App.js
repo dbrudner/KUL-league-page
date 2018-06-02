@@ -8,6 +8,8 @@ import reducers from './reducers';
 import {ThemeProvider} from 'styled-components';
 import theme from './theme';
 
+import SiteContext from './components/site-context/site-context'
+
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 class App extends Component {
@@ -16,7 +18,10 @@ class App extends Component {
             <div>
                 <Provider store={createStoreWithMiddleware(reducers)}>
                     <ThemeProvider theme={theme}>
-                        <Router/>
+                        <div>
+                            <SiteContext/>
+                            <Router/>
+                        </div>
                     </ThemeProvider>
                 </Provider>
             </div>
