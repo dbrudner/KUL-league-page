@@ -15,7 +15,7 @@ import Confirm from './steps/confirm';
 import Arrows from '../general/arrows';
 import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { login, logout } from '../../actions/index';
+import { changeSiteContext } from '../../actions/index';
 
 
 class Register extends Component {
@@ -62,6 +62,9 @@ class Register extends Component {
     }
 
     componentDidMount() {
+
+        console.log(this.props);
+
         axios.get('/test')
         .then(res => {
             const {_id, isRegistered} = res.data;
@@ -80,14 +83,9 @@ class Register extends Component {
     }
 
     nextStep = () => {if (this.state.step < 4) this.setState({step: this.state.step + 1})};
-    prevStep = () => {if (this.state.step >= -1) this.setState({step: this.state.step - 1})};
+    prevStep = () => {if (this.state.step > 0) this.setState({step: this.state.step - 1})};
 
     handleChange = (name, value) => this.setState({[name]: value})
-
-    handleSelectChange = (name, event) => {
-        console.log(event);
-        console.log(name);
-    }
 
     renderStep = () => {
         if (this.state.step === 0) return <Step0 nextStep={this.nextStep} />
@@ -108,12 +106,8 @@ class Register extends Component {
         )
     }
 
-    handleSwipe = (position, e) => {
-        console.log(position.x, position.y);
-    }
-
     render() {
-        console.log(this.state);
+        this.props.changeSiteContext("Registration");
 
         if (this.state.isRegistered) return <h3 className="text-center">You are already registered!</h3>
         
@@ -126,8 +120,8 @@ class Register extends Component {
 
         return (
             <Swipe
-                onSwipeRight={this.prevStep}
-                onSwipeLeft={this.nextStep}
+                // onSwipeRight={this.prevStep}
+                // onSwipeLeft={this.nextStep}
             >
                 {this.renderHeader()}
                 {this.renderStep()}
@@ -143,4 +137,8 @@ function mapStateToProps(state) {
     }
 }
 
-export default connect(mapStateToProps)(Register)
+function mapDispatchToProps(dispatch) {
+    return bindActionCreators({changeSiteContext}, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Register)

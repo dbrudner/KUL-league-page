@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Select from '../../../styled/elements/select'
 import Label from '../../../styled/elements/label'
-
+import Slider from '../../../styled/blocks/slider'
 
 export default function Step1(props) {
 
@@ -10,6 +10,7 @@ export default function Step1(props) {
     return (
         <div>
             <div>
+                <Slider value={90} />
                 <Label question>Which describes you? </Label>
                 <Select onChange={e => props.handleChange("experience", e.target.value)}>
                     <option value={1}>Newbie. Less than 3 Ultimate games played.</option>

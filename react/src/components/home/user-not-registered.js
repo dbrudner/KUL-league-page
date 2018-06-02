@@ -1,12 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import P from '../../styled/elements/p'
+import Button from '../../styled/elements/button'
+import H3 from '../../styled/elements/h3'
 
 export default function UserNotRegistered(props) {
     return (
         <div>
-            <h3 className="text-center">You are not registered for this season!</h3>
-            <P center helper>Click <Link to="/register">here</Link> to register</P>
+            <H3 danger center fontSize="3.6rem">You are not registered for this season!</H3>
+            <div class="text-center">
+                <Link to="/register"><Button margin="2rem">Register</Button></Link>
+            </div>
         </div>
     )
 }
