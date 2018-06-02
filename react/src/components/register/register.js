@@ -9,7 +9,7 @@ import Step0 from './steps/step0';
 import Step1 from './steps/step1';
 import Step2 from './steps/step2';
 import Step3 from './steps/step3';
-// import Step4 from './steps/step4';
+import Step4 from './steps/step4';
 import InfoCheck from './steps/info-check';
 import Confirm from './steps/confirm';
 import Arrows from '../general/arrows';
@@ -25,7 +25,7 @@ class Register extends Component {
 
         this.state = {
             step: 0,
-            user: null,            
+            user: null,
             // Step 1 - Basic Information
             firstName: '',
             lastName:'',
@@ -41,9 +41,9 @@ class Register extends Component {
             // Step 2 - Jersey Info
             jerseySize: '',
             jerseyName: '',
-            jerseyNumber: 0,
-            jerseyNumberBackup: 0,
-            jerseySize: 'm',
+            jerseyNumber: '',
+            jerseyNumberBackup: '',
+            jerseySize: '',
             jerseyStyle: 'Sleeves',
 
             // Step 3 - Contact
@@ -75,14 +75,14 @@ class Register extends Component {
     handleSubmit = () => {
         const registrationInfo = {...this.state};
         delete registrationInfo.step;
-        delete registrationInfo.user;        
+        delete registrationInfo.user;
         axios.post('/register', {registrationInfo, user: this.state.user})
         .then(res => {
             console.log(res);
         })
     }
 
-    nextStep = () => {if (this.state.step < 4) this.setState({step: this.state.step + 1})};
+    nextStep = () => {if (this.state.step < 6) this.setState({step: this.state.step + 1})};
     prevStep = () => {if (this.state.step > 0) this.setState({step: this.state.step - 1})};
 
     handleChange = (name, value) => this.setState({[name]: value})
@@ -91,10 +91,10 @@ class Register extends Component {
         if (this.state.step === 0) return <Step0 nextStep={this.nextStep} />
         if (this.state.step === 1) return <Step1 handleChange={this.handleChange} data={this.state} nextStep={this.nextStep} prevStep={this.prevStep} />
         if (this.state.step === 2) return <Step2 data={this.state} nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} />
-        // if (this.state.step === 2) return <Step4 data={this.state} nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} />        
-        if (this.state.step === 3) return <Step3 data={this.state} nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} />        
-        if (this.state.step === 4) return <InfoCheck data={this.state} />
-        if (this.state.step === 5) return <Confirm />        
+        if (this.state.step === 3) return <Step3 data={this.state} nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} />
+        if (this.state.step === 4) return <Step4 data={this.state} nextStep={this.nextStep} prevStep={this.prevStep} handleChange={this.handleChange} />
+        if (this.state.step === 5) return <InfoCheck data={this.state} />
+        if (this.state.step === 6) return <Confirm />
     }
 
     renderHeader = () => {
@@ -110,13 +110,13 @@ class Register extends Component {
         this.props.changeSiteContext("Registration");
 
         if (this.state.isRegistered) return <h3 className="text-center">You are already registered!</h3>
-        
+
         if (!this.state.user) return (
             <div>
                 <h3 className="text-center">Log in before you register!</h3>
                 <P center helper>Click <Link to="/login">here</Link> to login</P>
             </div>
-        )     
+        )
 
         return (
             <Swipe
@@ -125,7 +125,7 @@ class Register extends Component {
             >
                 {this.renderHeader()}
                 {this.renderStep()}
-                {this.state.step < 4 ? <Arrows next={this.nextStep} prev={this.prevStep} /> : <Arrows handleSubmit={this.handleSubmit} next={this.nextStep} prev={this.prevStep} submit/>}
+                {this.state.step < 5 ? <Arrows next={this.nextStep} prev={this.prevStep} /> : <Arrows handleSubmit={this.handleSubmit} next={this.nextStep} prev={this.prevStep} submit/>}
             </Swipe>
         )
     }
