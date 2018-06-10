@@ -34,18 +34,6 @@ export default function Step2(props) {
             <div>
                 <Tabs handleChange={handleSizeChange} tabs={jerseySizes} />
             </div>
-            {/* <div>
-                <Label>Jersey Name</Label>
-                <Input type="text" value={jerseyName} onChange={e => props.handleChange("jerseyName", e.target.value)}/>
-            </div>
-            <div>
-                <Label>Jersey Number</Label>
-                <Input type="text" value={jerseyNumber} onChange={e => props.handleChange("jerseyNumber", e.target.value)}/>
-            </div>
-            <div>
-                <Label>Jersey Number backup</Label>
-                <Input type="number" value={jerseyNumberBackup} onChange={e => props.handleChange("jerseyNumberBackup", e.target.value)}/>
-            </div> */}
         </div>
     )
 }

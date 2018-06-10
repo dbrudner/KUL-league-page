@@ -22,10 +22,11 @@ export default class Players extends Component {
     renderUserInfo = () => {
 
         return this.state.players.map(player => {
+            console.log(player.gender);
             return (
-                <tr style={player.isRegistered ? {backgroundColor: "green"} : {backgroundColor: "red"}}>
+                <tr style={player.isRegistered ? {backgroundColor: "#d7ffd7"} : {backgroundColor: "#ff9292"}}>
                     <td>{(`${player.firstName || ''} ${player.lastName || ''}`).trim() || "None"}</td>
-                    <td>{player.gender}</td>
+                    <td>{player.gender ? player.gender.charAt(0) : ""}</td>
                 </tr>
             )
         })
@@ -48,7 +49,7 @@ export default class Players extends Component {
                     <thead>
                         <tr>
                             <th>Name</th>
-                            <th>Gender</th>
+                            <th>G</th>
                         </tr>
                     </thead>
                     <tbody>

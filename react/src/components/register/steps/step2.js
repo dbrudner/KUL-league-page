@@ -9,37 +9,28 @@ export default function Step1(props) {
 
     console.log(props.data.experience);
 
+    const renderItem = (value, name) => {
+        return (
+            <div>
+                <H3 fontSize="3.2rem" margin="1rem 0">{name}</H3>
+                    <div style={{fontSize: "1.4rem", display: "flex", justifyContent: "space-between", margin: "1rem"}}>
+                        <div>Beginner</div>
+                        <div style={{marginLeft: "-3rem"}}>Veteran</div>
+                        <div>Pro</div>
+                    </div>
+                <Slider value={props.data[value]} onChange={e => props.handleChange(value, e.target.value)}/>
+            </div>
+        )
+    }
+
+
     return (
         <div>
-            <div>
-                <H3 fontSize="3.2rem" margin="1rem 0">Experience</H3>
-                <div style={{fontSize: "1.4rem", display: "flex", justifyContent: "space-between", margin: "1rem"}}>
-                    <div>Beginner</div>
-                    <div style={{marginLeft: "-3rem"}}>Veteran</div>
-                    <div>Pro</div>
-                </div>
-                <Slider value={props.data.experience} onChange={e => props.handleChange("experience", e.target.value)}/>
-            </div>
+            {renderItem("experience", "Experience")}
             <hr/>
-            <div>
-                <H3 fontSize="3.2rem" margin="1rem 0">Time Played</H3>
-                <div style={{fontSize: "1.4rem", display: "flex", justifyContent: "space-between", margin: "1rem"}}>
-                    <div>Beginner</div>
-                    <div style={{marginLeft: "-3rem"}}>Veteran</div>
-                    <div>Pro</div>
-                </div>
-                <Slider value={props.data.timePlayed} onChange={e => props.handleChange("timePlayed", e.target.value)}/>
-            </div>
+            {renderItem("timePlayed", "Time Played")}
             <hr/>
-            <div>
-                <H3 fontSize="3.2rem" margin="1rem 0">Athleticism</H3>
-                <div style={{fontSize: "1.4rem", display: "flex", justifyContent: "space-between", margin: "1rem"}}>
-                    <div>Beginner</div>
-                    <div style={{marginLeft: "-3rem"}}>Veteran</div>
-                    <div>Pro</div>
-                </div>
-                <Slider value={props.data.athleticism} onChange={e => props.handleChange("athleticism", e.target.value)}/>
-            </div>
+            {renderItem("athleticism", "Athleticism")}
         </div>
     )
 }

@@ -14,7 +14,7 @@ class Home extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {email: null};
+        this.state = {email: null, loading: true};
     }
 
     componentDidMount() {
@@ -23,7 +23,6 @@ class Home extends Component {
         console.log(this.props);
         axios.get('/test')
         .then(res => {
-            console.log(res.data);
             const {email, isRegistered} = res.data;
 
             if (email) {
@@ -34,6 +33,8 @@ class Home extends Component {
             } else  {
                 this.setState({isLoggedIn: false})
             }
+
+            this.setState({loading: false})
         })
     }
 
@@ -51,6 +52,9 @@ class Home extends Component {
 
     render() {
         console.log(this.props);
+
+        if (this.state.loading) return <div>Loading</div>
+
         return (
             <div>
                 <Header>KUL</Header>

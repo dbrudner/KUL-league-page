@@ -7,6 +7,11 @@ export default function InfoCheck(props) {
 
     // const {firstName, lastName, gender, age} = this.props.data;
 
+    const tableDivStyle = {
+        overflowY: "scroll",
+        marginBottom: "220px"
+    }
+
     const renderUserInfo = () => {
         return Object.keys(props.data).map(key => {
             if (key === "step" || key === "user") return;
@@ -25,7 +30,7 @@ export default function InfoCheck(props) {
 
 
     return (
-        <div>
+        <div style={tableDivStyle}>
             <Table>
                 <thead>
                     <tr>

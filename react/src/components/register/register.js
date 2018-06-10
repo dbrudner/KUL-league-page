@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom'
+import { Link, Redirect } from 'react-router-dom'
 import Swipe from 'react-easy-swipe';
 import Header from '../..//styled/elements/header';
 import Button from '../../styled/elements/button';
@@ -25,6 +25,7 @@ class Register extends Component {
 
         this.state = {
             step: 0,
+            redirect: null,
             user: null,
             // Step 1 - Basic Information
             firstName: '',
@@ -62,8 +63,7 @@ class Register extends Component {
     }
 
     componentDidMount() {
-
-        console.log(this.props);
+        this.props.changeSiteContext("Registration");
 
         axios.get('/test')
         .then(res => {
@@ -76,9 +76,10 @@ class Register extends Component {
         const registrationInfo = {...this.state};
         delete registrationInfo.step;
         delete registrationInfo.user;
+        delete registrationInfo.redirect;        
         axios.post('/register', {registrationInfo, user: this.state.user})
         .then(res => {
-            console.log(res);
+            this.setState({redirect: "/"})
         })
     }
 
@@ -107,7 +108,8 @@ class Register extends Component {
     }
 
     render() {
-        this.props.changeSiteContext("Registration");
+
+        if (this.state.redirect) return <Redirect to="/"></Redirect>
 
         if (this.state.isRegistered) return <h3 className="text-center">You are already registered!</h3>
 
@@ -119,14 +121,16 @@ class Register extends Component {
         )
 
         return (
-            <Swipe
-                // onSwipeRight={this.prevStep}
-                // onSwipeLeft={this.nextStep}
-            >
-                {this.renderHeader()}
-                {this.renderStep()}
-                {this.state.step < 5 ? <Arrows next={this.nextStep} prev={this.prevStep} /> : <Arrows handleSubmit={this.handleSubmit} next={this.nextStep} prev={this.prevStep} submit/>}
-            </Swipe>
+                <div>
+                    {this.renderHeader()}
+                    {this.renderStep()}
+                    <Swipe
+                        onSwipeRight={this.prevStep}
+                        onSwipeLeft={this.nextStep}
+                    >
+                        {this.state.step < 5 ? <Arrows fixed next={this.nextStep} prev={this.prevStep} /> : <Arrows fixed handleSubmit={this.handleSubmit} next={this.nextStep} prev={this.prevStep} submit/>}
+                    </Swipe>
+                </div>
         )
     }
 }
