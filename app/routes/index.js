@@ -1,7 +1,7 @@
 const userRoutes = require('./user-routes')
 const reactRoutes = require('./react-routes')
 const adminRoutes = require('./admin-routes')
-
+const commonRoutes = require('./common-routes')
 
 module.exports = function (app, passport) {
 
@@ -20,7 +20,12 @@ module.exports = function (app, passport) {
     // Registers a user for season
     userRoutes.register(app, '/register')
 
+    // Gets all players
     adminRoutes.getAllPlayers(app, '/players')
 
+    // Adds a game to schedule
     adminRoutes.addGame(app, '/newgame')
+
+    // Gets all games
+    commonRoutes.getGames(app, '/games')
 }

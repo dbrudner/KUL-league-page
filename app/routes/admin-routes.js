@@ -21,7 +21,6 @@ module.exports = {
     addGame: function(app, route) {
         console.log("HI");
         app.post(route, (req, res) => {
-            console.log(db.Game);
             db.Game.create(req.body, (err, game) => res.json(game));
         })
     }

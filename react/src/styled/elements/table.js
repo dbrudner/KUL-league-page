@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const Table = styled.table`
 
     border: 1px solid black;
-    width: 80%;
+    width: ${props => props.noWidth ? null : `80%`};
     margin-left: 10%;
 
     thead {
