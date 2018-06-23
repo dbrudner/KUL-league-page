@@ -26,6 +26,15 @@ const Table = styled.table`
             border-bottom: 1px solid black;
         }
     }
+
+    tbody {
+        tr {
+            :hover {
+                background-color: lightgray !important;
+                transition: all .2s;
+            }
+        }
+    }
 `
 
 export default Table;

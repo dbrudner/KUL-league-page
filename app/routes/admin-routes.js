@@ -15,5 +15,14 @@ module.exports = {
                 res.json(players);
             })
         })
+    },
+
+    // Add new game to schedule
+    addGame: function(app, route) {
+        console.log("HI");
+        app.post(route, (req, res) => {
+            console.log(db.Game);
+            db.Game.create(req.body, (err, game) => res.json(game));
+        })
     }
 };

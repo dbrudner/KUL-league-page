@@ -6,7 +6,7 @@ export default class Players extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container-fluid">
                 <h1>Players</h1>
                 <PlayersTable />
             </div>

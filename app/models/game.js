@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const gameSchema = new Schema({
-    season: Number,
+    season: String,
     gameNumber: Number,
     teamHome: String,
     teamAway: String,

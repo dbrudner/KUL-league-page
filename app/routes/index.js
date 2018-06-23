@@ -18,7 +18,9 @@ module.exports = function (app, passport) {
     userRoutes.signup(app, passport, '/signup')
 
     // Registers a user for season
-    userRoutes.register(app, '/register')    
+    userRoutes.register(app, '/register')
 
     adminRoutes.getAllPlayers(app, '/players')
+
+    adminRoutes.addGame(app, '/newgame')
 }
