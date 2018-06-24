@@ -4,7 +4,7 @@ const Table = styled.table`
 
     border: 1px solid black;
     width: ${props => props.noWidth ? null : `80%`};
-    margin-left: 10%;
+    margin-left: ${props => props.noWidth ? null : `10%`};
 
     thead {
         background-color: black;

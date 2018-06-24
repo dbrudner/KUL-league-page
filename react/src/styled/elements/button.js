@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
-const LoginButton = styled.button`
-    background-color: ${props => props.theme.colorPrimary}
-    color: white;
+const Button = styled.button`
+    background-color: ${props => props.backgroundColor ? props.theme.colorPrimary: props.backgroundColor};
+    color: ${props => props.backgroundColor ? props.theme.colorPrimary: props.backgroundColor};
     padding: 5px 20px;
     border-radius: 10px;
     display: inline-block;
@@ -15,4 +15,4 @@ const LoginButton = styled.button`
     }
 `
 
-export default LoginButton
+export default Button

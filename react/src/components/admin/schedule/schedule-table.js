@@ -3,6 +3,7 @@ import axios from 'axios';
 import Table from '../../../styled/elements/table';
 import DesktopInput from '../../../styled/elements/desktop-input'
 import HoverHighlight from '../../../styled/modifiers/hover-highlight'
+import DeleteModal from './delete-modal';
 
 export default class ScheduleTable extends Component {
 
@@ -11,11 +12,14 @@ export default class ScheduleTable extends Component {
 
 		this.state = {
 			date: "",
+			time: "",
 			teamHome: "",
 			teamAway: "",
 			location: "",
 			error: "",
-			schedule: []
+			schedule: [],
+			confirmDeleteModal: false,
+			deleteBlock: null
 		}
 	}
 
@@ -27,9 +31,10 @@ export default class ScheduleTable extends Component {
 	}
 
 	addToSchedule = () => {
+		const {error, schedule, confirmDeleteModal, deleteBlock, ...newGame} = this.state
+
 		this.setState({error: ""})
-		const hasError = Object.keys(this.state).reduce((error, category) => {
-			console.log(category);
+		const hasError = Object.keys(newGame).reduce((error, category) => {
 			if (error) return error;
 			if (!this.state[category]) return category;
 		}, null)
@@ -38,32 +43,36 @@ export default class ScheduleTable extends Component {
 			return this.setState({error: hasError})
 		}
 
-		const {error, schedule, ...newGame} = this.state
-		return;
 		axios.post("/newgame", newGame)
 		.then(res => {
-			console.log(res);
+			console.log(res.data);
+			this.setState({schedule: [res.data, ...this.state.schedule]})
 		})
 	}
 
 	handleChange = (name, e) => this.setState({[name]: e.target.value})
 
+	openDeleteModal = game => {
+		this.setState({confirmDeleteModal: !this.state.confirmDeleteModal, deleteBlock: game})
+	}
+
 	renderSchedule = schedule => {
 		return schedule.map(game => {
-			const { date, teamHome, teamAway, location } = game;
+			const { _id, date, teamHome, teamAway, location, time } = game;
 
 			return (
-				<tr>
+				<tr key={_id}>
 					<td>{date}</td>
+					<td>{time}</td>
 					<td>{teamHome}</td>
 					<td>{teamAway}</td>
 					<td>{location}</td>
 					<td>
 						<div>
-							<a href="#">edit</a>
+							<p>edit</p>
 						</div>
 						<div>
-							<a href="#">delete</a>
+							<p onClick={() => this.openDeleteModal(game)}>delete</p>
 						</div>
 					</td>
 				</tr>
@@ -75,10 +84,14 @@ export default class ScheduleTable extends Component {
 		return (
 			<React.Fragment>
 				{this.state.error ? <p>Enter {this.state.error} before submitting</p> : null}
+
+				<DeleteModal game={this.state.deleteBlock} close={this.openDeleteModal} isOpen={this.state.confirmDeleteModal}  />
+
 				<Table noWidth>
 					<thead className="text-center">
 						<tr>
 							<th>Date</th>
+							<th>Time</th>
 							<th>Home team</th>
 							<th >Away team</th>
 							<th >Location</th>
@@ -86,9 +99,12 @@ export default class ScheduleTable extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
+						<tr style={{borderBottom: "1px solid black"}}>
 							<th>
 								<DesktopInput  onChange={e =>this.handleChange("date", e)} value={this.state.date} type="date" />
+							</th>
+							<th onChange={e =>this.handleChange("time", e)}>
+								<DesktopInput value={this.state.time} />
 							</th>
 							<th>
 								<select onChange={e =>this.handleChange("teamHome", e)}>

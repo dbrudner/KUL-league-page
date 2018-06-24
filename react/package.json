@@ -7,6 +7,7 @@
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-easy-swipe": "^0.0.14",
+    "react-modal": "^3.4.5",
     "react-onclickoutside": "^6.7.1",
     "react-redux": "^5.0.7",
     "react-responsive": "^4.1.0",
