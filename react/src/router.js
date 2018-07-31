@@ -16,7 +16,7 @@ import Register from './components/register/register';
 import NoMatchingRoute from './components/no-matching-router';
 import Stats from './components/stats/stats';
 import Players from './components/admin/players/players';
-import AddTeam from './components/admin/add-team/add-team';
+import Teams from './components/admin/teams/teams';
 
 class App extends Component {
     render() {
@@ -35,7 +35,7 @@ class App extends Component {
                             <Route exact path='/register' component={Register} />
                             <Route exact path='/stats' component={Stats} />
                             <Route exact path='/admin/players' component={Players} />
-                            <Route exact path='/admin/add-team' component={AddTeam} />                            
+                            <Route exact path='/admin/teams' component={Teams} />
                             <Route component={NoMatchingRoute} />
                         </Switch>
                     </div>

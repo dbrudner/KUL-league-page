@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const MobileNavItem = styled.div`
     display: inline-block;
-    color: ${props => props.active ? props.theme.bluePrimary : "white"};
-    background-color: ${props => props.active ? "white" : props.theme.bluePrimary};    
+    color: ${props => props.active ? "white" : "#1f1f1f"};
+    background-color: #0c0c1d;
     height: 90px;
     width: 25%;
     text-align: center;

@@ -4,7 +4,7 @@ const theme = {
     textSecondary: "#f3f3f3",
     bgSecondary: "#f36161",
     textDanger: "red",
-    colorPrimary: "dodgerblue",
+    colorPrimary: "#171748",
     bluePrimary: "#7b7bff"
 }
 
