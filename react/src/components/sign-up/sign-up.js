@@ -50,7 +50,7 @@ export default class Login extends Component {
 				}}
 			>
 				<h1 style={{ letterSpacing: "5px" }} center>
-					SIGN UP
+					SIGN UP <i className="fas fa-user-plus" />
 				</h1>
 				{/* <P helper>Need help?</P> */}
 				<form onSubmit={this.handleSubmit}>
@@ -97,9 +97,27 @@ export default class Login extends Component {
 						Already have an account? <Link to="/home">Sign in</Link>
 					</p> */}
 					<Button width="80%" margin="5vh 0" center type="submit">
-						Submit
+						Submit <i className="fas fa-share-square" />
 					</Button>
 				</form>
+				<p
+					style={{
+						fontSize: "14px",
+						lineHeight: "30px",
+						margin: "0 10%"
+					}}
+				>
+					<i
+						className="fas fa-asterisk"
+						style={{
+							marginRight: "5px",
+							fontSize: "6px",
+							transform: "translateY(-8px)"
+						}}
+					/>
+					Make sure to register for the current season after signing
+					up!
+				</p>
 			</div>
 		);
 	}

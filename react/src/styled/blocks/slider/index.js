@@ -1,38 +1,98 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const Slider = styled.input.attrs({
-    type: "range",
-    min: "1",
-    max: "100"
+	type: "range",
+	min: "1",
+	max: "100"
 })`
-    -webkit-appearance: none;  /* Override default CSS styles */
-    appearance: none;
-    width: 100%; /* Full-width */
-    height: 25px; /* Specified height */
-    background: #d3d3d3; /* Grey background */
-    outline: none; /* Remove outline */
-    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-    transition: opacity .2s;
+	height: 56px;
+	-webkit-appearance: none;
+	margin: 10px 0;
+	width: 100%;
+	background-color: transparent;
+	:focus {
+		outline: none;
+	}
+	::-webkit-slider-runnable-track {
+		width: 100%;
+		height: 16px;
+		cursor: pointer;
+		animate: 0.2s;
+		box-shadow: 0px 0px 0px #000000;
+		background: linear-gradient(to right, #954ae8, #3642e8);
+		border-radius: 12px;
+		border: 0px solid #000000;
+	}
+	::-webkit-slider-thumb {
+		box-shadow: 0px 0px 0px #000000;
 
-    :hover {
-        opacity: 1; /* Fully shown on mouse-over */
-    }
-    /* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
-    ::-webkit-slider-thumb {
-        -webkit-appearance: none; /* Override default look */
-        appearance: none;
-        width: 25px; /* Set a specific slider handle width */
-        height: 25px; /* Slider handle height */
-        background: #4CAF50; /* Green background */
-        cursor: pointer; /* Cursor on hover */
-    }
-    ::-moz-range-thumb {
-        width: 25px; /* Set a specific slider handle width */
-        height: 25px; /* Slider handle height */
-        background: #4CAF50; /* Green background */
-        cursor: pointer; /* Cursor on hover */
-    }
-`
+		height: 49px;
+		width: 50px;
+		border-radius: 25px;
+		background: #f0fffe;
+		cursor: pointer;
+		-webkit-appearance: none;
+		margin-top: -17px;
+	}
+	:focus::-webkit-slider-runnable-track {
+		background: linear-gradient(to right, #954ae8, #3642e8);
+	}
+	::-moz-range-track {
+		width: 100%;
+		height: 16px;
+		cursor: pointer;
+		animate: 0.2s;
+		box-shadow: 0px 0px 0px #000000;
+		background: linear-gradient(to right, #954ae8, #3642e8);
+		border-radius: 12px;
+		border: 0px solid #000000;
+	}
+	::-moz-range-thumb {
+		box-shadow: 0px 0px 0px #000000;
+
+		height: 49px;
+		width: 50px;
+		border-radius: 25px;
+		background: #f0fffe;
+		cursor: pointer;
+	}
+	::-ms-track {
+		width: 100%;
+		height: 16px;
+		cursor: pointer;
+		animate: 0.2s;
+		background: transparent;
+		border-color: transparent;
+		color: transparent;
+	}
+	::-ms-fill-lower {
+		background: linear-gradient(to right, #954ae8, #3642e8);
+		border: 0px solid #000000;
+		border-radius: 24px;
+		box-shadow: 0px 0px 0px #000000;
+	}
+	::-ms-fill-upper {
+		background: linear-gradient(to right, #954ae8, #3642e8);
+		border: 0px solid #000000;
+		border-radius: 24px;
+		box-shadow: 0px 0px 0px #000000;
+	}
+	::-ms-thumb {
+		margin-top: 1px;
+		box-shadow: 0px 0px 0px #000000;
+
+		height: 49px;
+		width: 50px;
+		border-radius: 25px;
+		background: #f0fffe;
+		cursor: pointer;
+	}
+	:focus::-ms-fill-lower {
+		background: linear-gradient(to right, #954ae8, #3642e8);
+	}
+	:focus::-ms-fill-upper {
+		background: linear-gradient(to right, #954ae8, #3642e8);
+	}
+`;
 
 export default Slider;
