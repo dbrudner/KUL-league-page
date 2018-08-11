@@ -51,6 +51,10 @@ class Home extends Component {
 			});
 	};
 
+	login = () => {
+		console.log("Login");
+	};
+
 	render() {
 		if (this.state.loading) return <div>Loading</div>;
 
@@ -67,10 +71,14 @@ class Home extends Component {
 				<div
 					style={{ justifyContent: "space-around", marginTop: "5vh" }}
 				>
-					<Button width="30vw">Login</Button>
-					<Button border="transparent" width="30vw">
-						Sign Up
+					<Button onClick={this.login} width="30vw">
+						Login
 					</Button>
+					<Link to="/sign-up">
+						<Button border="transparent" width="30vw">
+							Sign Up
+						</Button>
+					</Link>
 				</div>
 			</HomeStyled>
 		);

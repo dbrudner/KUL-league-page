@@ -40,9 +40,9 @@ const Button = styled.button`
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	font-size: 16px;
-	width: ${props => props.width}
+	width: ${props => props.width};
 	/* font-size: 36px; */
-	/* margin: ${props => props.margin || 0} */
+	margin: ${props => props.margin || 0};
 	/* width: ${props => props.width || ""} */
 
 	/* :active {

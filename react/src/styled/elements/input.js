@@ -12,6 +12,9 @@ const Input = styled.input`
 	display: block;
 	background-color: transparent;
 	opacity: 0.6;
+	margin: auto;
+	width: 80%;
+	margin-top: 5vh;
 
 	:focus {
 		outline: none;
