@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Input from "../../../styled/elements/input";
 import Label from "../../../styled/elements/label";
 import Button from "../../../styled/elements/button";
+import DescriptionBox from "./description-box";
 
 export default function Step1(props) {
 	const { firstName, lastName, gender, age, height } = props.data;
@@ -41,7 +42,7 @@ export default function Step1(props) {
 				style={{
 					display: "flex",
 					justifyContent: "space-around",
-					marginTop: "3vh"
+					marginTop: "10vh"
 				}}
 			>
 				<Button

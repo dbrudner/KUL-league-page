@@ -10,6 +10,7 @@ import Step1 from "./steps/step1";
 import Step2 from "./steps/step2";
 import Step3 from "./steps/step3";
 import Step4 from "./steps/step4";
+import Step5 from "./steps/step5";
 import InfoCheck from "./steps/info-check";
 import Confirm from "./steps/confirm";
 import Arrows from "../general/arrows";
@@ -129,7 +130,16 @@ class Register extends Component {
 					handleChange={this.handleChange}
 				/>
 			);
-		if (this.state.step === 5) return <InfoCheck data={this.state} />;
+		if (this.state.step === 5)
+			return (
+				<Step5
+					data={this.state}
+					data={this.state}
+					nextStep={this.nextStep}
+					prevStep={this.prevStep}
+					handleChange={this.handleChange}
+				/>
+			);
 		if (this.state.step === 6) return <Confirm />;
 	};
 
