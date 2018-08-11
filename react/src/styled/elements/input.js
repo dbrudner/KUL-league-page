@@ -1,20 +1,25 @@
-import styled from 'styled-components';
-
+import styled from "styled-components";
 
 const Input = styled.input`
-    width: 80%;
-    margin-left: 10%;
-    border-radius: 2px;
-    border: 1px solid #d8d8d8;
-    margin-bottom: 1rem;
-    height: 4.8rem;
-    padding-left: 2rem;
-    font-size: 1.8rem;
-    color: #d8d8d8;
+	margin-left: 10%;
+	border-radius: 2px;
+	border: none;
+	border-bottom: 1px solid rgb(216, 216, 216, 1);
+	margin-bottom: 1rem;
+	height: 4.8rem;
+	font-size: 1.8rem;
+	color: white;
+	display: block;
+	background-color: transparent;
+	opacity: 0.6;
 
-    :active {
-        border: 1px solid green;
-    }
-`
+	:focus {
+		outline: none;
+	}
+
+	::placeholder {
+		color: white;
+	}
+`;
 
 export default Input;

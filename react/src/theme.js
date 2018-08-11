@@ -1,11 +1,11 @@
 const theme = {
-    v: "#f3f3f3",
-    textPrimary: "black",
-    textSecondary: "#f3f3f3",
-    bgSecondary: "#f36161",
-    textDanger: "red",
-    colorPrimary: "#171748",
-    bluePrimary: "#7b7bff"
-}
+	color1: "#CC33FF",
+	color2: "#954AE8",
+	color3: "#592FFF",
+	color4: "#3642E8",
+	color5: "#8BB1FF",
+	white: "#fff",
+	light: "rgb(216, 216, 216, 0.6)"
+};
 
 export default theme;
