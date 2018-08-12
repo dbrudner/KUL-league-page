@@ -47,7 +47,7 @@ export default class Login extends Component {
 			<div
 				style={{
 					textAlign: "center",
-					marginTop: "10vh"
+					marginTop: "5vh"
 				}}
 			>
 				<h1 style={{ letterSpacing: "5px" }} center>
