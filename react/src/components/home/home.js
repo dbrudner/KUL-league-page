@@ -69,12 +69,15 @@ class Home extends Component {
 				<Input placeholder="Username" />
 				<Input placeholder="Password" type="password" />
 				<div
-					style={{ justifyContent: "space-around", marginTop: "5vh" }}
+					style={{
+						justifyContent: "space-around",
+						marginTop: "10vh"
+					}}
 				>
 					<Button onClick={this.login} width="30vw">
 						Login
 					</Button>
-					<Link to="/sign-up">
+					<Link to="/signup">
 						<Button border="transparent" width="30vw">
 							Sign Up
 						</Button>

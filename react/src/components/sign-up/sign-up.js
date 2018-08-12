@@ -46,15 +46,19 @@ export default class Login extends Component {
 		return (
 			<div
 				style={{
-					textAlign: "center"
+					textAlign: "center",
+					marginTop: "10vh"
 				}}
 			>
 				<h1 style={{ letterSpacing: "5px" }} center>
 					SIGN UP <i className="fas fa-user-plus" />
 				</h1>
 				{/* <P helper>Need help?</P> */}
-				<form onSubmit={this.handleSubmit}>
-					<div s>
+				<form
+					style={{ marginTop: "10vh" }}
+					onSubmit={this.handleSubmit}
+				>
+					<div>
 						<Input
 							placeholder="E-mail"
 							type="text"
@@ -96,7 +100,12 @@ export default class Login extends Component {
 					>
 						Already have an account? <Link to="/home">Sign in</Link>
 					</p> */}
-					<Button width="80%" margin="5vh 0" center type="submit">
+					<Button
+						width="80%"
+						margin="10vh 0 5vh 0"
+						center
+						type="submit"
+					>
 						Submit <i className="fas fa-share-square" />
 					</Button>
 				</form>
@@ -117,6 +126,16 @@ export default class Login extends Component {
 					/>
 					Make sure to register for the current season after signing
 					up!
+				</p>
+				<p
+					style={{
+						marginTop: "2vh",
+						textAlign: "left",
+						marginLeft: "10%",
+						color: "rgb(216, 216, 216, 1)"
+					}}
+				>
+					Already signed up? Log in <Link to="/">here</Link>
 				</p>
 			</div>
 		);

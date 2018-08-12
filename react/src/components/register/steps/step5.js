@@ -22,8 +22,8 @@ export default class extends Component {
 		console.log(this.props.data.height);
 
 		const getHeight = () => {
-			if (this.props.data.height > 94) {
-				return 94;
+			if (this.props.data.height > 91) {
+				return 91;
 			}
 
 			if (this.props.data.height < 16) {
@@ -45,7 +45,7 @@ export default class extends Component {
 						<div>{item}</div>
 						<div
 							style={{
-								backgroundColor: "rgb(216, 216, 216, 0.6)",
+								backgroundColor: "rgb(216, 216, 216, 0.3)",
 								height: "1px",
 								width: "100vw",
 								marginTop: ".7rem",
@@ -96,10 +96,12 @@ export default class extends Component {
 						style={{
 							position: "absolute",
 							bottom: "0",
-							left: `calc(52vw - 50vh * ${Number(getHeight()) /
+							left: `calc(45vw - 40vh * ${Number(getHeight()) /
 								200})`,
-							height: `calc(50vh * ${Number(getHeight()) / 100})`,
-							width: `calc(50vh * ${Number(getHeight()) / 100})`
+							height: `calc((40vh * ${Number(getHeight()) /
+								100}) + 10vh)`,
+							width: `calc((40vh * ${Number(getHeight()) /
+								100}) + 10vh)`
 						}}
 					>
 						<img src={logo} />

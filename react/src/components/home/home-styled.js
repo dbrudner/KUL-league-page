@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const Home = styled.div`
 	text-align: center;
-
+	margin-top: 10vh;
 	img {
 		height: 15vw;
 	}
