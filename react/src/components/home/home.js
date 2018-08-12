@@ -66,13 +66,15 @@ class Home extends Component {
 						<h1>KUL</h1>
 					</div>
 				</div>
-				<Input placeholder="Username" />
-				<Input placeholder="Password" type="password" />
+				<Input indent="60px" bgImg="profile" placeholder="Username" />
+				<Input
+					indent="60px"
+					bgImg="lock"
+					placeholder="Password"
+					type="password"
+				/>
 				<div
-					style={{
-						justifyContent: "space-around",
-						marginTop: "10vh"
-					}}
+					style={{ justifyContent: "space-around", marginTop: "5vh" }}
 				>
 					<Button onClick={this.login} width="30vw">
 						Login

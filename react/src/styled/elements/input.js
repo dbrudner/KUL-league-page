@@ -1,4 +1,8 @@
 import styled from "styled-components";
+import lock from "../../assets/images/lock-icon.svg";
+import profile from "../../assets/images/profile.svg";
+
+const images = { lock, profile };
 
 const Input = styled.input`
 	margin-left: 10%;
@@ -18,7 +22,14 @@ const Input = styled.input`
 	margin: auto;
 	width: 80%;
 	margin-top: 5vh;
+	text-indent: ${props => props.indent || null};
 
+	background-image: ${props =>
+		props.bgImg ? `url(${images[props.bgImg]})` : null};
+
+	background-position: 5px 9px;
+	background-repeat: no-repeat;
+	background-size: 25px 25px;
 	:focus {
 		outline: none;
 	}
