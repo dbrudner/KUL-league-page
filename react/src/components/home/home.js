@@ -22,7 +22,7 @@ class Home extends Component {
 	componentDidMount() {
 		this.props.changeSiteContext("Home");
 		console.log(this.props);
-		axios.get("/test").then(res => {
+		axios.get("/api/test").then(res => {
 			const { email, isRegistered } = res.data;
 
 			if (email) {
@@ -40,7 +40,7 @@ class Home extends Component {
 
 	logout = () => {
 		axios
-			.get("/logout")
+			.get("/api/logout")
 			.then(res => {
 				console.log(res);
 				this.props.logout();
