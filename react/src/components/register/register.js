@@ -32,7 +32,7 @@ class Register extends Component {
 			lastName: "",
 			gender: "Female",
 			age: 1,
-			height: 0,
+			height: 50,
 
 			// Step 1 - Player skill/experience
 			experience: "",

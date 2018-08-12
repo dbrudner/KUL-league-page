@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "../../../styled/blocks/slider";
-import logo from "../../../assets/images/logo.svg";
+import logo from "../../../assets/images/logo2.svg";
 import DescriptionBox from "./description-box";
 
 const standardTicks = ["6'8", "6'4", "6'0", "5'8", "5'4", "5'0", ""];
@@ -22,11 +22,14 @@ export default class extends Component {
 		console.log(this.props.data.height);
 
 		const getHeight = () => {
-			if (this.props.data.height > 16) {
-				return this.props.data.height;
+			if (this.props.data.height > 94) {
+				return 94;
 			}
 
-			return 17;
+			if (this.props.data.height < 16) {
+				return 16;
+			}
+			return this.props.data.height;
 		};
 
 		const renderHeight = () => {
@@ -93,14 +96,27 @@ export default class extends Component {
 						style={{
 							position: "absolute",
 							bottom: "0",
-							left: `calc(25vh - (50vh * ${Number(getHeight()) /
-								200}))`,
+							left: `calc(52vw - 50vh * ${Number(getHeight()) /
+								200})`,
 							height: `calc(50vh * ${Number(getHeight()) / 100})`,
 							width: `calc(50vh * ${Number(getHeight()) / 100})`
 						}}
 					>
 						<img src={logo} />
 					</div>
+					{/* Actual indicator, if needed */}
+					{/* <div
+						style={{
+							backgroundColor: "white",
+							width: "20px",
+							height: "1px",
+							position: "absolute",
+							left: "10vw",
+							bottom: `calc(49vh * ${Number(
+								this.props.data.height
+							) / 100})`
+						}}
+					/> */}
 				</div>
 			</div>
 		);
