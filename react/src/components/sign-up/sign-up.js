@@ -66,6 +66,8 @@ export default class Login extends Component {
 							onChange={e =>
 								this.handleChange("email", e.target.value)
 							}
+							indent="60px"
+							bgImg="profile"
 						/>
 					</div>
 					<div>
@@ -76,6 +78,8 @@ export default class Login extends Component {
 							onChange={e =>
 								this.handleChange("password", e.target.value)
 							}
+							indent="60px"
+							bgImg="lock"
 						/>
 					</div>
 					<div>
@@ -89,6 +93,8 @@ export default class Login extends Component {
 									e.target.value
 								)
 							}
+							indent="60px"
+							bgImg="lock"
 						/>
 					</div>
 					{/* <p
@@ -129,7 +135,7 @@ export default class Login extends Component {
 				</p>
 				<p
 					style={{
-						marginTop: "2vh",
+						marginTop: "5vh",
 						textAlign: "left",
 						marginLeft: "10%",
 						color: "rgb(216, 216, 216, 1)"
