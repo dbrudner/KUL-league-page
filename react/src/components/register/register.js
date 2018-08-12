@@ -24,7 +24,7 @@ class Register extends Component {
 		super(props);
 
 		this.state = {
-			step: 2,
+			step: 5,
 			redirect: null,
 			user: null,
 			// Step 1 - Basic Information
@@ -32,7 +32,7 @@ class Register extends Component {
 			lastName: "",
 			gender: "Female",
 			age: 1,
-			height: 1,
+			height: 0,
 
 			// Step 1 - Player skill/experience
 			experience: "",

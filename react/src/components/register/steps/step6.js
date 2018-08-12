@@ -4,7 +4,7 @@ import Label from "../../../styled/elements/label";
 import H3 from "../../../styled/elements/h3";
 import Tabs from "../../general/tabs/tabs";
 
-export default function Step2(props) {
+export default props => {
 	const { jerseyName, jerseyNumber, jerseyNumberBackup } = props.data;
 
 	const jerseyStyles = [
@@ -57,4 +57,4 @@ export default function Step2(props) {
 			</div>
 		</div>
 	);
-}
+};

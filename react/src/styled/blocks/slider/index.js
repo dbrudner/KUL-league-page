@@ -10,6 +10,15 @@ const Slider = styled.input.attrs({
 	margin: 10px 0;
 	width: 100%;
 	background-color: transparent;
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
+	-ms-transform-origin: 50% 50%;
+	-o-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+
+	transform: ${props => props.vertical && "rotate(90deg)"};
+	width: ${props => props.vertical && "50vh"};
+
 	:focus {
 		outline: none;
 	}

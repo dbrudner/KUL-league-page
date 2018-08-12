@@ -1,60 +1,108 @@
 import React, { Component } from "react";
-import Input from "../../../styled/elements/input";
-import Label from "../../../styled/elements/label";
-import H3 from "../../../styled/elements/h3";
-import Tabs from "../../general/tabs/tabs";
+import Slider from "../../../styled/blocks/slider";
+import logo from "../../../assets/images/logo.svg";
+import DescriptionBox from "./description-box";
 
-export default props => {
-	const { jerseyName, jerseyNumber, jerseyNumberBackup } = props.data;
+const standardTicks = ["6'8", "6'4", "6'0", "5'8", "5'4", "5'0", ""];
+const metricTicks = ["203", "193", "183", "173", "163", "152", ""];
 
-	const jerseyStyles = [
-		{ name: "Sleeves", value: "sleeves" },
-		{ name: "Sleeveless", value: "sleeveless" }
-	];
+const ticks = [];
 
-	const handleChange = (name, value) => {
-		props.handleChange("jerseySize", value);
-	};
+export default class extends Component {
+	constructor(props) {
+		super(props);
+		this.sliderRef = React.createRef();
 
-	const handleStyleChange = value => {
-		props.handleChange("jerseyStyle", value);
-	};
+		this.state = {
+			value: 0
+		};
+	}
 
-	return (
-		<div>
+	render() {
+		console.log(this.props.data.height);
+
+		const getHeight = () => {
+			if (this.props.data.height > 16) {
+				return this.props.data.height;
+			}
+
+			return 17;
+		};
+
+		const renderHeight = () => {
+			return standardTicks.map((item, i) => {
+				return (
+					<div
+						key={i}
+						style={{
+							display: "flex",
+							justifyContent: "space-between"
+						}}
+					>
+						<div>{item}</div>
+						<div
+							style={{
+								backgroundColor: "rgb(216, 216, 216, 0.6)",
+								height: "1px",
+								width: "100vw",
+								marginTop: ".7rem",
+								marginLeft: "5px",
+								marginRight: "5px"
+							}}
+						/>
+						<div>{metricTicks[i]}</div>
+					</div>
+				);
+			});
+		};
+
+		return (
 			<div>
-				<Label>Jersey Name</Label>
-				<Input
-					type="text"
-					value={jerseyName}
-					onChange={e =>
-						props.handleChange("jerseyName", e.target.value)
-					}
+				<h2
+					style={{
+						textTransform: "uppercase",
+						letterSpacing: "10px",
+						textAlign: "center"
+					}}
+				>
+					Height
+				</h2>
+				<div
+					style={{ display: "flex", justifyContent: "space-around" }}
 				/>
-			</div>
-			<div>
-				<Label>Jersey Number</Label>
-				<Input
-					type="number"
-					value={jerseyNumber}
+				<Slider
+					value={this.props.data.height}
 					onChange={e =>
-						props.handleChange("jerseyNumber", e.target.value)
+						this.props.handleChange("height", e.target.value)
 					}
+					ref={this.sliderRef}
 				/>
+
+				<div
+					style={{
+						height: "50vh",
+						backgroundColor: "transparent",
+						transform: "translateY(2vh) translateX(1vh)",
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "space-between"
+					}}
+				>
+					{renderHeight()}
+					<div
+						style={{
+							position: "absolute",
+							bottom: "0",
+							left: `calc(25vh - (50vh * ${Number(getHeight()) /
+								200}))`,
+							height: `calc(50vh * ${Number(getHeight()) / 100})`,
+							width: `calc(50vh * ${Number(getHeight()) / 100})`
+						}}
+					>
+						<img src={logo} />
+					</div>
+				</div>
 			</div>
-			<div>
-				<Label>Jersey Number backup</Label>
-				<Input
-					type="number"
-					value={jerseyNumberBackup}
-					onChange={e =>
-						props.handleChange("jerseyNumberBackup", e.target.value)
-					}
-				/>
-			</div>
-			<div style={{ margin: "2rem" }}>
-				<Tabs handleChange={handleStyleChange} tabs={jerseyStyles} />
-			</div>
-		</div>
-	);
-};
+		);
+	}
+}

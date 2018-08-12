@@ -20,7 +20,7 @@ class App extends Component {
 			<Router>
 				<div>
 					{/* <Navbar/> */}
-					<div style={{ margin: "60px 20px 120px 20px" }}>
+					<div style={{ margin: "20px" }}>
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route exact path="/login" component={Login} />
