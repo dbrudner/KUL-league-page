@@ -27,4 +27,6 @@ module.exports = function(app, passport) {
 
 	// Gets all games
 	commonRoutes.getGames(app, "/api/games");
+
+	reactRoutes.react(app, "*");
 };
