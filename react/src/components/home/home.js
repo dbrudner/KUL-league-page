@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Button from "../../styled/elements/button";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import axios from "axios";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -53,10 +53,15 @@ class Home extends Component {
 
 	login = () => {
 		console.log("Login");
+		this.setState({ loggedIn: true });
 	};
 
 	render() {
+		console.log(this.props);
+
 		if (this.state.loading) return <div>Loading</div>;
+
+		if (this.state.loggedIn) return <Redirect to="/register" />;
 
 		return (
 			<HomeStyled>

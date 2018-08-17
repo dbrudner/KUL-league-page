@@ -24,7 +24,7 @@ class Register extends Component {
 		super(props);
 
 		this.state = {
-			step: 5,
+			step: 0,
 			redirect: null,
 			user: null,
 			// Step 1 - Basic Information
