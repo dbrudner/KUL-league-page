@@ -11,6 +11,7 @@ import Step2 from "./steps/step2";
 import Step3 from "./steps/step3";
 import Step4 from "./steps/step4";
 import Step5 from "./steps/step5";
+import Step6 from "./steps/step6";
 import InfoCheck from "./steps/info-check";
 import Confirm from "./steps/confirm";
 import Arrows from "../general/arrows";
@@ -24,7 +25,7 @@ class Register extends Component {
 		super(props);
 
 		this.state = {
-			step: 0,
+			step: 6,
 			redirect: null,
 			user: null,
 			// Step 1 - Basic Information
@@ -134,13 +135,21 @@ class Register extends Component {
 			return (
 				<Step5
 					data={this.state}
+					nextStep={this.nextStep}
+					prevStep={this.prevStep}
+					handleChange={this.handleChange}
+				/>
+			);
+		if (this.state.step === 6)
+			return (
+				<Step6
 					data={this.state}
 					nextStep={this.nextStep}
 					prevStep={this.prevStep}
 					handleChange={this.handleChange}
 				/>
 			);
-		if (this.state.step === 6) return <Confirm />;
+		if (this.state.step === 7) return <Confirm />;
 	};
 
 	renderHeader = () => {

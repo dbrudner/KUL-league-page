@@ -1,30 +1,25 @@
 import React, { Component } from "react";
 import Input from "../../../styled/elements/input";
 import Label from "../../../styled/elements/label";
-import H3 from "../../../styled/elements/h3";
-import Tabs from "../../general/tabs/tabs";
+import Button from "../../../styled/elements/button";
+import DescriptionBox from "./description-box";
 
-export default props => {
-	const { jerseyName, jerseyNumber, jerseyNumberBackup } = props.data;
+export default function Step1(props) {
+	const {
+		jerseyName,
+		jerseyNumber,
+		jerseyNumberBackup,
+		jerseyStyle
+	} = props.data;
 
-	const jerseyStyles = [
-		{ name: "Sleeves", value: "sleeves" },
-		{ name: "Sleeveless", value: "sleeveless" }
-	];
-
-	const handleChange = (name, value) => {
-		props.handleChange("jerseySize", value);
-	};
-
-	const handleStyleChange = value => {
-		props.handleChange("jerseyStyle", value);
-	};
+	console.log(jerseyStyle);
 
 	return (
 		<div>
 			<div>
-				<Label>Jersey Name</Label>
 				<Input
+					placeholder="Jersey name"
+					autoFocus
 					type="text"
 					value={jerseyName}
 					onChange={e =>
@@ -33,9 +28,9 @@ export default props => {
 				/>
 			</div>
 			<div>
-				<Label>Jersey Number</Label>
 				<Input
-					type="number"
+					placeholder="Jersey number"
+					type="text"
 					value={jerseyNumber}
 					onChange={e =>
 						props.handleChange("jerseyNumber", e.target.value)
@@ -43,8 +38,8 @@ export default props => {
 				/>
 			</div>
 			<div>
-				<Label>Jersey Number backup</Label>
 				<Input
+					placeholder="Jersey backup number"
 					type="number"
 					value={jerseyNumberBackup}
 					onChange={e =>
@@ -52,9 +47,38 @@ export default props => {
 					}
 				/>
 			</div>
-			<div style={{ margin: "2rem" }}>
-				<Tabs handleChange={handleStyleChange} tabs={jerseyStyles} />
+			<div
+				style={{
+					display: "flex",
+					justifyContent: "space-around",
+					marginTop: "10vh"
+				}}
+			>
+				<Button
+					onClick={() => props.handleChange(jerseyStyle, "sleeves")}
+					border={
+						jerseyStyle === "sleeves"
+							? "1px solid white"
+							: "transparent"
+					}
+					active={jerseyStyle === "sleeves"}
+				>
+					Sleeves
+				</Button>
+				<Button
+					onClick={() =>
+						props.handleChange(jerseyStyle, "sleeveless")
+					}
+					border={
+						jerseyStyle === "sleeveless"
+							? "1px solid white"
+							: "transparent"
+					}
+					active={jerseyStyle === "sleeveless"}
+				>
+					Sleeveless
+				</Button>
 			</div>
 		</div>
 	);
-};
+}
