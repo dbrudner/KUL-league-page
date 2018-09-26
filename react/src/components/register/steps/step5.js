@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "../../../styled/blocks/slider";
-import logo from "../../../assets/images/playerWhite.svg";
+import logo from "../../../assets/images/logo2.svg";
 import DescriptionBox from "./description-box";
 
 const standardTicks = ["6'8", "6'4", "6'0", "5'8", "5'4", "5'0", ""];
